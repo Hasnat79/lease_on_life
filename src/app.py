@@ -18,8 +18,13 @@ from langchain_community.vectorstores import Chroma
 from langchain.chains import RetrievalQA
 from langchain_community.llms import HuggingFacePipeline
 tokenizer ,base_model = None, None
-persist_directory = "./db"
 
+if not os.path.exists('data'):
+    os.makedirs('data')
+
+if not os.path.exists('db'):
+    os.makedirs('db')
+persist_directory = "./db"
 def load_model():
     global tokenizer, base_model
     checkpoint = "./LaMini-T5-738M"
